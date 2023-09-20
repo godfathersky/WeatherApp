@@ -1,0 +1,115 @@
+.Current-weather-box{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 6%;
+}
+
+.Current-weather-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 6%;
+}
+
+.City-searcher{
+    width: 60%;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 6%;
+}
+
+.City-searcher-label{
+    margin-bottom: 2%;
+}
+
+.City-searcher-input{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.City-searcher-input input{
+    width: 80%;
+    height: 50%;
+    border: none;
+    outline: none;
+    padding-left: 3%;
+    font-size: medium;
+}
+
+.Search-button{
+    width: 20%;
+    height: 50%;
+    outline: none;
+    border: none;
+    background-image: url(./magnifying-glass-solid.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    /* transition-duration: 300ms; */
+}
+
+/* .Search-button:focus{
+    transition-duration: 300ms;
+    background-color: green;
+} */
+
+.Current-weather-city-and-time{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 3vmin;
+    margin-bottom: 3%;
+}
+
+.Current-weather-city{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Data-title{
+    font-weight: bold;
+    font-size: 2vmin;
+}
+
+.Current-weather-data{
+    display: flex;
+    justify-content: center;
+    width: 78%;
+}
+
+.Current-weather-data-main, .Current-weather-data-wind{
+    margin-right: 3%;
+}
+
+.Current-weather-data-main, .Current-weather-data-wind, .Current-weather-data-extras{
+    width: 30%;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 2%;
+    border-radius: 15px;
+}
+
+.Current-weather-data-main p, .Current-weather-data-wind p, .Current-weather-data-extras p{
+    font-size: x-large;
+}
+
+.Current-weather-data-main-items, .Current-weather-data-wind-items, .Current-weather-data-extras-items{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.Current-weather-data-main-items p, .Current-weather-data-wind-items p, .Current-weather-data-extras-items p{
+    font-size: medium;
+    margin: 3%;
+}

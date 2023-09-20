@@ -1,0 +1,43 @@
+.Forecast-weather-box{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 6%;
+}
+
+.Forecast-weather-data{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 2vmin;
+    border-radius: 15px;
+}
+
+.Forecast-weather-title{
+    margin-bottom: 2%;
+}
+
+.Forecast-weather-title, .Forecast-weather-items{
+    width: 100%;
+}
+
+.Forecast-weather-items ul{
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1%;
+}
+
+li{
+    width: calc(100%/4.13);
+    height: auto;
+    background-color: grey;
+    border-radius: 15px;
+    padding: 2%;
+    margin-bottom: 1%;
+}

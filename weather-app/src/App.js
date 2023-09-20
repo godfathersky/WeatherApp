@@ -1,24 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import WeatherContext from './WeatherContext';
+import { CurrentWeather } from './CurrentWeatherComponent';
+import { ForecastWeather } from './ForecastWeatherComponent';
 
 function App() {
+  const [geoData, setGeoData] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
+  const [cityName, setCityName] = useState('Warszawa');
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <WeatherContext.Provider value={{ geoData, setGeoData, weatherData, setWeatherData, cityName, setCityName }}>
+      <div className="App">
+        <header className="App-header">
+          <p>Weather App</p>
+        </header>
+        <main className="App-main">
+          <CurrentWeather></CurrentWeather>
+          <ForecastWeather></ForecastWeather>
+          <ForecastWeather></ForecastWeather>
+          <ForecastWeather></ForecastWeather>
+        </main>
+      </div>
+    </WeatherContext.Provider>
   );
 }
 
