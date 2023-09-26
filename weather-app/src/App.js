@@ -13,13 +13,11 @@ function App() {
   return (
     <WeatherContext.Provider value={{ geoData, setGeoData, weatherData, setWeatherData, cityName, setCityName }}>
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           <p>Weather App</p>
-        </header>
+        </header> */}
         <main className="App-main">
           <CurrentWeather></CurrentWeather>
-          <ForecastWeather></ForecastWeather>
-          <ForecastWeather></ForecastWeather>
           <ForecastWeather></ForecastWeather>
         </main>
       </div>

@@ -9,7 +9,7 @@ export function ForecastWeather(){
     useEffect(() => {
         if (geoData && geoData[0]) {
         const { lat, lon } = geoData[0];
-        const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=723d2ea54043cdf57eb953f291379dc3`;
+        const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&lang=pl&appid=723d2ea54043cdf57eb953f291379dc3`;
 
         fetch(url)
             .then(response => response.json())
@@ -18,7 +18,7 @@ export function ForecastWeather(){
         }
     }, [geoData]);
 
-    if (!forecastData) return <div>Loading forecast...</div>;
+    if (!forecastData) return <div>Ładowanie prognozy...</div>;
 
     return(
         <div className="Forecast-weather-box">
@@ -31,10 +31,10 @@ export function ForecastWeather(){
                         {forecastData.list.slice(0,8).map((forecast, index) => (
                             <li key={index}>
                                 <h3>{new Date(forecast.dt * 1000).toLocaleString()}</h3>
-                                <p>Temperature: {forecast.main.temp}°C</p>
-                                <p>Feels Like: {forecast.main.feels_like}°C</p>
-                                <p>Humidity: {forecast.main.humidity}%</p>
-                                <p>Wind Speed: {forecast.wind.speed} m/s</p>
+                                <p>Temp. aktualna: {forecast.main.temp}°C</p>
+                                <p>Temp. odczuwalna: {forecast.main.feels_like}°C</p>
+                                <p>Wilgotność: {forecast.main.humidity}%</p>
+                                <p>Prędkość wiatru: {forecast.wind.speed ? Math.round((forecast.wind.speed*3600)/1000)+" km/h": "N/A"}</p>
                             </li>
                         ))}
                     </ul>

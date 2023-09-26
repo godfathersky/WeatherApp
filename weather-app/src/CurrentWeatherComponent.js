@@ -4,20 +4,9 @@ import WeatherContext from './WeatherContext';
 
 export function CurrentWeather() {
     const { geoData, setGeoData, weatherData, setWeatherData, cityName, setCityName } = useContext(WeatherContext);
-    // const [geoData, setGeoData] = useState(null);
-    // const [weatherData, setWeatherData] = useState(null);
-    // const [cityName, setCityName] = useState('Warszawa');
 
-    const handleInputClick = (event) => {
-        event.target.value = '';
-      };
-    
-    useEffect(() => {
-        fetchDataForCity(cityName);
-    }, []);
-    
     const fetchDataForCity = (city) => {
-        const testUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=723d2ea54043cdf57eb953f291379dc3`;
+        const testUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&lang=pl&appid=723d2ea54043cdf57eb953f291379dc3`;
 
         fetch(testUrl)
             .then(response => response.json())
@@ -25,7 +14,7 @@ export function CurrentWeather() {
                 setGeoData(data);
                 if (data && data[0]) {
                     const { lat, lon } = data[0];
-                    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=723d2ea54043cdf57eb953f291379dc3`;
+                    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=pl&appid=723d2ea54043cdf57eb953f291379dc3`;
                     return fetch(url);
                 }
                 throw new Error("No data for the given city");
@@ -35,6 +24,15 @@ export function CurrentWeather() {
             .catch(error => console.error("Error fetching data:", error));
     }
 
+    const handleInputClick = (event) => {
+        event.target.value = '';
+    };
+
+    useEffect(() => {
+        fetchDataForCity(cityName);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     const handleInputChange = (e) => {
         setCityName(e.target.value);
     };
@@ -43,7 +41,7 @@ export function CurrentWeather() {
         fetchDataForCity(cityName);
     };
 
-    if (!weatherData) return <div>Loading...</div>;
+    if (!weatherData) return <div>Ładowanie...</div>;
 
     const { main, wind, clouds, sys, weather , dt} = weatherData;
     const iconUrl = `http://openweathermap.org/img/wn/${weather[0].icon}.png`;
@@ -53,7 +51,7 @@ export function CurrentWeather() {
             <div className="Current-weather-box">
                 <div className="City-searcher">
                     <div className="City-searcher-input">
-                        <input type="text" id="cityName" placeholder="Enter city name" value={cityName} onChange={handleInputChange} onClick={handleInputClick}></input>
+                        <input type="text" id="cityName" placeholder="Wprowadź nazwę miejscowości" onChange={handleInputChange} onClick={handleInputClick}></input>
                         <button className="Search-button" onClick={handleSearchClick}></button>
                     </div>
                 </div>
@@ -70,7 +68,7 @@ export function CurrentWeather() {
                         <div className="Current-weather-data-main-items">
                             <p>Temp. aktualna: {main.temp}&nbsp;°C</p>
                             <p>Temp. odczuwalna: {main.feels_like}&nbsp;°C</p>
-                            <p>Ciśnienie: {main.pressure}&nbsp;hPa</p>
+                            <p>Ciśnienie atm.: {main.pressure}&nbsp;hPa</p>
                             <p>Wilgotność: {main.humidity}&nbsp;%</p>
                         </div>
                     </div>
